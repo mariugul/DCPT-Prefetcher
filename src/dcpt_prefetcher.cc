@@ -147,7 +147,7 @@ void prefetch_access(AccessStat stat)
         if (table->nrOfEntries == ENTRY_LIMIT)
             table->entry_list.pop_back();
 
-        Entry *newentry = new entry(stat.pc);
+        Entry *newentry = new Entry(stat.pc);
         newentry->pc = stat.pc;
         newentry->lastAddress = stat.mem_addr;
         newentry->lastPrefetch = 0;
