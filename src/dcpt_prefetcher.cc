@@ -48,17 +48,17 @@ struct Table
 
     // Variables
     int nrOfEntries;
-    list<Entry *> entryList;
+    list<Entry *> entry_list;
     Entry *findEntry(Addr pc); // Entry object
 };
 
 // Class Function Definition
 Entry *Table::findEntry(Addr pc)
 {
-    list<Entry *>::iterator i = entrylist.begin();
-    for (; i != entrylist.end(); ++i)
+    list<Entry *>::iterator i = entry_list.begin();
+    for (; i != entry_list.end(); ++i)
     {
-        entry *search_entry = *i;
+        Entry *search_entry = *i;
 
         if (pc == search_entry->pc)
             return search_entry; //returning the existing entry with the right pc
@@ -138,21 +138,21 @@ void prefetch_init(void)
 void prefetch_access(AccessStat stat)
 {
     int64_t Delta;
-    entry *current_entry = table->findEntry(stat.pc);
+    Entry *current_entry = table->findEntry(stat.pc);
 
     if (current_entry == NULL)
     { //create a new entry for the pc
 
         /* Remove the oldest entry if the table reaches the maximum amount of entries */
         if (table->nrOfEntries == ENTRY_LIMIT)
-            table->entrylist.pop_back();
+            table->entry_list.pop_back();
 
-        entry *newentry = new entry(stat.pc);
+        Entry *newentry = new entry(stat.pc);
         newentry->pc = stat.pc;
         newentry->lastAddress = stat.mem_addr;
         newentry->lastPrefetch = 0;
         newentry->deltaArray.push_front(1);
-        table->entrylist.push_front(newentry);
+        table->entry_list.push_front(newentry);
         current_entry = newentry;
 
         if (table->nrOfEntries < ENTRY_LIMIT)
