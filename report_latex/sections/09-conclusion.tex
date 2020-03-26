@@ -1,0 +1,8 @@
+\section{Conclusion}\label{sec:conclusion}
+In this report, we have compared the RPT prefetching algorithm to the DCPT algorithm. The goal has been to see how well they both perform against each other by comparing the average speedup compared to using no prefetcher. 
+
+Adjusting the number of deltas per entry proved that 6 deltas per entry is optimal. Too few deltas means that it does not allow for correlation to be found, and too many results in prefetches being too late.
+
+Comparing RPT to DCPT has proved that the RPT algorithm had an overall geometric mean speedup by 2\% and the DCPT by 10\%. Despite the DCPT algorithm being more complex and consuming more resources, the speedup gained from it is worth the trade-off.
+
+However, if a prefetcher was being designed for a specific purpose, such as place and route simulation, water modeling, or data compression, the DCPT algorithm would not be more efficient. Because the DCPT speedup gain was not significantly better than the RPT for those tests, it would be more efficient to use an RPT prefetcher in that case because the RPT prefetcher uses less hardware and consumes less power.

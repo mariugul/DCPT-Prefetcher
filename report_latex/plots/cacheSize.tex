@@ -1,0 +1,49 @@
+\begin{figure}[!htb]
+    \centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={Cache Size \SI{}{[\mega\byte]}},
+    ylabel={Speedup},
+    %xtick={0,1 ,2, 4, 8, 16},
+    %ytick={0,0.5,1,1.5, 2},
+    %nodes near coords,
+    %nodes near coords align={vertical},
+    legend pos=south east,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=\textwidth/2,
+]
+%DCPT
+\addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (1,1.1)(2,1.32)(4,1.36)(8,1.37)(16, 1.39)
+    };
+    
+%RPT
+\addplot[
+    color=red,
+    mark=square,
+    ]
+    coordinates {
+    (1,1.02)(2,1.26)(4, 1.30)(8, 1.31)(16, 1.33)
+    };
+    
+%No Prefetch
+\addplot[
+    color=gray,
+    mark=square,
+    ]
+    coordinates {
+    (1,1.0)(2,1.23)(4,1.28)(8,1.29)(16, 1.31)
+    };
+
+    \legend{DCPT, RPT, No Prefetch}
+    
+\end{axis}
+\end{tikzpicture}
+    \caption{Speedups compared to 1MB L2 cache with no prefetching}
+    \label{fig:cachesize}
+\end{figure}

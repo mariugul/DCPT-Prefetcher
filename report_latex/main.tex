@@ -1,0 +1,63 @@
+\documentclass[conference,usenames,dvipsnames]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{comment}
+\usepackage{listings}
+\lstset{language = C++}
+\lstset{basicstyle=\ttfamily}
+\usepackage{graphicx}
+\usepackage[binary-units=true]{siunitx}
+\sisetup{inter-unit-product =$\cdot$}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+\usepackage{textcomp}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=Green,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\newcommand{\citetemp}[1]{[\color{red}source\color{black}]}
+
+\title{Comparing the Performance of RPT and DCPT Prefetching Algorithms}
+
+
+\author{\IEEEauthorblockN{Aksel Torgerson
+\IEEEauthorblockN{atorgerson@wisc.edu}
+\IEEEauthorblockA{Faculty of Information Technology and E.E}
+{Norwegian University of Science and Technology}\\
+Trondheim, Norway}
+\and
+\IEEEauthorblockN{Marius C. K. Gulbrandsen}%Was something with this block
+\IEEEauthorblockN{mariugul@stud.ntnu.no}
+\IEEEauthorblockA{{Faculty of Information Technology and E.E.} \\
+{Norwegian University of Science and Technology}\\
+Trondheim, Norway}
+}
+
+\maketitle
+\input{sections/00-abstract}
+\input{sections/01-introduction}
+\input{sections/03-background}
+\input{sections/04-methodology}
+\input{sections/05-implementation}
+\input{sections/06-results}
+\input{sections/07-discussion}
+\input{sections/08-related-work}
+\input{sections/09-conclusion}
+%\input{sections/10-acknowledgment}
+\input{sections/references}
+
+\end{document}

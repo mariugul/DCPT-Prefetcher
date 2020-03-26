@@ -1,0 +1,49 @@
+% Data
+%----------------------------------------
+\pgfplotstableread[row sep=\\,col sep=&]{
+    bench   & DCPT & RPT  & nothing \\
+    twolf   & 0.99 & 1.00 & 1.0 \\
+    bzip2s  & 1.00 & 1.00 & 1.0 \\
+    swim    & 1.01 & 0.99 & 1.0 \\
+    bzip2g  & 1.03 & 1.01 & 1.0 \\
+    bzip2p  & 1.04 & 1.01 & 1.0 \\
+    art110  & 1.06 & 1.02 & 1.0 \\
+    art470  & 1.06 & 1.02 & 1.0 \\
+    apsi    & 1.09 & 1.01 & 1.0 \\
+    applu   & 1.09 & 1.03 & 1.0 \\
+    galgel  & 1.10 & 1.02 & 1.0 \\
+    wupwise & 1.25 & 1.08 & 1.0 \\
+    ammp    & 1.68 & 1.12 & 1.0 \\
+    }\mydata
+
+% Plot
+%----------------------------------------
+\begin{figure}[!htb]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+            ybar,
+            bar width=.1cm,
+            width=\textwidth/2,
+            height=\textwidth/3,
+            %height=.5\textwidth/1,5,
+            legend style={at={(0.5,1)},
+                anchor=north,legend columns=-1},
+            symbolic x coords={twolf, bzip2s, swim, bzip2g, bzip2p, art110, art470, apsi, applu, galgel, wupwise, ammp},
+            xticklabel style={rotate=45},
+            xtick=data,
+            %nodes near coords,
+            %nodes near coords align={vertical, rotate=90, anchor=west},
+            ymin=.5,ymax=1.7,
+            %ylabel={Speedup},
+            %xlabel={Benchmark},
+        ]
+        \addplot table[x=bench,y=DCPT]   {\mydata};
+        \addplot table[x=bench,y=RPT]    {\mydata};
+        \addplot table[x=bench,y=nothing]{\mydata};
+        \legend{DCPT, RPT, No Prefetch}
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Performance of DCPT vs RPT prefetchers}
+    \label{fig:benchmarktest}
+\end{figure}

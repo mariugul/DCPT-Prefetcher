@@ -1,0 +1,38 @@
+% Data
+%----------------------------------------
+\pgfplotstableread[row sep=\\,col sep=&]{
+    descr & DCPT & RPT            \\
+    Accuracy     & 0.664  & 0.583 \\
+    Coverage     & 0.471  & 0.10  \\
+    }\mydata
+%DCPT identified 2001231
+
+% Plot
+%----------------------------------------
+\begin{figure}[!htb]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+            ybar = 7pt,
+            %bar width=.4cm,
+            width=\textwidth/2,
+            height=\textwidth/3,
+            legend pos = north east,
+            symbolic x coords={Accuracy, Coverage},
+            xticklabel style={rotate=45},
+            xtick=data,
+            enlarge x limits = 0.7,
+            nodes near coords,
+            nodes near coords align={vertical},
+            ymin=0, ymax=0.8,
+            %ylabel={Speedup},
+            %xlabel={Benchmark},
+        ]
+        \addplot table[x=descr,y=DCPT]{\mydata};
+        \addplot table[x=descr,y=RPT]{\mydata};
+        \legend{DCPT, RPT}
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Statistics for DCPT and RPT prefetchers}
+    \label{fig:statistics}
+\end{figure}

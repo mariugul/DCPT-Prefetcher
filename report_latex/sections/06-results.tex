@@ -1,0 +1,21 @@
+\section{Results}\label{sec:results}
+ 
+\subsection{Overall Performance}
+    Figure \ref{fig:OverallPerformance} shows the DCPT implementation preforming 10\% better than the included benchmark prefetchers. However, the RPT implementation achieves a speedup of only 2\%, slightly better than half of them.
+    \input{plots/overall_performance}
+
+\subsection{Benchmarks}
+    Figure \ref{fig:benchmarktest} shows how the RPT and DCPT prefetcher performs against each individual test. The DCPT prefetcher performs slightly worse on the \emph{twolf} test, but increases slightly until the \emph{wupwise} and \emph{ammp} tests, where it performs outstandingly well. RPT on the other hand has a negligible performance impact until run against the \emph{wupwise} and \emph{ammp} tests, where it performs slightly better.
+    \input{plots/rpt_vs_dcpt}
+
+\subsection{Statistics}
+    Figure \ref{fig:statistics} shows the accuracy and coverage of the DCPT and the RPT prefetcher. These statistics can be calculated from equations (\ref{eq:coverage}) and (\ref{eq:accuracy}) which are explained in section \ref{sec:methodology}.
+    \input{plots/statistics}
+
+\subsection{Cache Size}
+    Figure \ref{fig:cachesize} shows how the different implementations performed when the L2 cache size was changed. Because the speedup value is given in reference to a 1MB L2 cache, the relative speedups of using no prefetcher is also given. They were tested with a 1MB, 2MB, 4MB, 8MB, and 16MB L2 cache size. 
+    \input{plots/cacheSize}
+    
+\subsection{Delta Size}
+    Figure \ref{fig:deltaEntries} shows how changing the amount of deltas per entry effects the relative speed up of the DCPT algorithm. Because RPT does not have a number of delta entries, it is not included in this graph.
+    \input{plots/deltaEntries}

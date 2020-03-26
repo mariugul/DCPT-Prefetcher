@@ -1,0 +1,14 @@
+\section{Discussion}\label{sec:discussion}
+The first approach was to optimize the DCPT algorithm and analyze different implementations. This proved rather difficult, so the goal was changed to explore how a DCPT algorithm compares to an RPT algorithm. The DCPT implementation proved to have a marginally higher performance than the other algorithms as seen in figure \ref{fig:OverallPerformance}. However, on a few tests as seen in figure \ref{fig:benchmarktest}, the DCPT algorithm does not improve performance by a significant amount. In these cases RPT performance and DCPT performance varied by only by 1-2\% percent. Therefore when running these types of workloads, it is more efficient to run an RPT prefetcher because it uses less hardware and thus power.
+
+As shown in figure \ref{fig:cachesize}, as the size of the cache increases, so does the average speedup compared to a cache with no prefetcher with a size of 1MB. This is expected of course, at least up until a certain point. In the tests ran, that limit was not observed, however, a strong stagnating trend was observed from 4MB cache size to 16MB cache size. In our prefetcher implementation, a 4MB cache size would yield the highest performance boost compared to the amount of hardware resources used.
+
+After the implementation of the DCPT prefetcher was done, the max number of deltas in the table were modified as seen in figure \ref{fig:deltaEntries}. It was found that a delta array of length 6 yielded the highest performance boost. Because an array that is too short does not allow for as many delta correlations to be found, and an array length that is too long requires a longer period of time to iterate through and check for correlations, it seems that an array length of 6 is the optimal length.
+
+
+
+
+
+%The implementation of the DCPT proves to have high performance compared to the benchmarks. However, the RPT implementation is not very efficient compared to the benchmarks, including the provided RPT prefetcher. This is likely due to a less efficient implementation of the algorithm, and also because RPT in general is a lower performing algorithm.
+
+%This section might elaborate on alternative approaches that you have tried, but were not successful. It discusses weaknesses of your scheme and highlights the strong and weak points of your experimental setup.

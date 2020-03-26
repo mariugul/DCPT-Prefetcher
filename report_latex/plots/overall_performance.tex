@@ -1,0 +1,42 @@
+% Data
+%----------------------------------------
+\pgfplotstableread[row sep=\\,col sep=&]{
+    prefetcher  & carT  \\
+    This DCPT   & 1.10  \\
+    This RPT    & 1.02  \\
+    Tagged      & 1.01  \\
+    SeqMiss     & 1.00  \\
+    SeqAcc      & 1.01  \\
+    RPT         & 1.06  \\
+    DCPT-p      & 1.08  \\
+    DCPT        & 1.05  \\
+    AdapSeq    & 1.01  \\
+    }\mydata
+
+%Plot 
+%----------------------------------------
+\begin{figure}[!htb]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+            ybar,
+            ymin=.95,ymax=1.15,
+            width = \textwidth/2,
+            height = \textwidth/3,
+            legend style={at={(0.5,1)},
+                anchor=north,legend columns=-1},
+            symbolic x coords={This DCPT, This RPT,Tagged,SeqMiss,SeqAcc,RPT,DCPT-p, DCPT, AdapSeq},
+            xticklabel style={rotate=45},
+            nodes near coords,
+            nodes near coords align={vertical},
+            xtick=data,
+            %ylabel={Speedup},
+        ]
+        \addplot table[x=prefetcher,y=carT]{\mydata};
+        
+    \end{axis}
+    \end{tikzpicture}
+    
+    \caption{Overall performance of different prefetchers}
+    \label{fig:OverallPerformance}
+\end{figure}

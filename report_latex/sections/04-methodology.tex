@@ -1,0 +1,70 @@
+\section{Methodology}\label{sec:methodology}
+The prefetcher was simulated in a software environment to test the performance of the DCPT algorithm. Originally used to simulate computer networking, this simulator is very flexible and can be used to test a wide variety of applications.
+
+    \subsection{Simulation Architecture}
+    The DCPT prefetcher is run on a modified version of the M5 simulator, which is an open-source hardware simulator system \cite{M5}. It simulates an Alpha 21264 microprocessor, a super scalar, out-of-order, single core processor. The prefetcher runs on the L2 cache. Below are some of the important hardware specifications of this virtual system.
+    
+    \begin{table}[!htb]
+    \centering
+    \caption{M5 Hardware Specifications}
+    \begin{tabular}{|l|l|}
+    \hline
+        L2 Cache Size    & \SI{1}{\mebi\byte}    \\
+        Block Size       & \SI{64}{\byte}        \\
+        Memory Bus Clock & \SI{400}{\mega\hertz} \\
+        Memory Bus Width & \SI{64}{\bit}         \\
+        Latency          & \SI{30}{\nano\second} \\
+        \hline
+    \end{tabular}
+    \end{table}
+    
+    \subsection{Benchmarks}
+    To evaluate the prefetcher we run it against the SPEC CPU2000 benchmark suite\cite{SPEC2000} which are CPU-intensive programs. Here are the relevant benchmarks used in the simulation. 
+    
+\begin{table}[!htb]
+    \centering
+    \caption{CPU2000 Simulation Benchmarks \cite{SPEC2000}}
+    
+    \begin{tabular}{ c|c|c} 
+    \label{tab:my_label}
+    Test & Type & Workload \\ 
+    \hline
+    ammp & float & Computational chemistry \\ 
+    appulu & float & Partial differential equations \\ 
+    apsi & float & Environmental modeling \\ 
+    art & float & Neural network simulation \\ 
+    bzip2 & int & Data compression \\ 
+    galgel & float & Fluid dynamics \\ 
+    swim & float & Water modeling \\ 
+    twolf & int & Place and route simulation \\ 
+    wupwise & float & Quantum chromodynamics \\ 
+    \end{tabular}
+\end{table}
+
+Because each benchmark consists of a vastly different workload, you cannot expect one type of prefetcher to perform outstandingly on every test. Because we are not designing a prefetcher for a specific reason, we will be averaging all the scores from each benchmark and ranking the prefetcher based on an overall score.
+
+\subsection{Evaluation}
+    Following are the relevant equations that were used to evaluate the prefetcher implementation. 
+    
+    \begin{equation}
+        Coverage = \frac{Eliminated\ misses}{Total\ misses\ without\ prefetching}
+        \label{eq:coverage}
+    \end{equation}
+    
+    Coverage, as shown in equation \ref{eq:coverage} is determined by taking the ratio of how many misses eliminated divided by the total number of misses without the implementation. It will roughly determine how well the prefetcher functions in regards to eliminated misses.
+    
+    \begin{equation}
+        Accuracy = \frac{Eliminated\ misses}{Total\ number\ of\ prefetches}
+        \label{eq:accuracy}
+    \end{equation}
+    
+    Accuracy, as shown in equation \ref{eq:accuracy} is determined by taking the ratio of the eliminated misses over the total number of prefetches. The prefetchers could have a high coverage ratio, but it may be wasting resources by performing too many prefetches. In this case the accuracy is judged by measuring how many of the prefetches actually resulted in eliminated misses.
+    
+    %\begin{equation}
+    %    Timeliness = \frac{On\ time\ %prefetches}{Useful\ prefetches}
+    %   \label{eq:timeliness}
+    %\end{equation}
+    
+    %Timeliness, as shown in equation \ref{eq:timeliness} is determined by taking the ratio of on time prefetches over those that were useful. For example, the prefetchers could be fetching all the correct blocks, however, they may be polluting the cache by fetching them too early. This can lead to a previously fetched block being replaced, and therefore nullifying any efforts of the prefetcher.
+
+    For the statistics, the closer the ratio is to 1 is better. A perfect prefetcher would have a 1 for each ratio, but it is impossible to predict data with 100\% accuracy.
