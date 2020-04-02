@@ -1,5 +1,5 @@
 # Comparing the Performance of RPT and DCPT Prefetching Algorithms
-[GitHub pages](https://mariugul.github.io/RPT-DCPT-Prefetcher/). This has been the project of spring 2020 in the course [TDT4260 - Computer Architecture](https://www.ntnu.edu/studies/courses/TDT4260#tab=omEmnet) at the Norwegian University of Science and Technology, Trondheim. The project was to simulate processor prefetchers in a hardware simulator, M5, and see how well the different prefetchers can improve the performance of the processor. The abstract to the report can be read in the next section and the full report can be opened in GitHub from [here](https://github.com/mariugul/DCPT-Prefetcher/blob/master/Report.pdf).
+[GitHub pages](https://mariugul.github.io/RPT-DCPT-Prefetcher/). This has been the project of spring 2020 in the course **[TDT4260 - Computer Architecture](https://www.ntnu.edu/studies/courses/TDT4260#tab=omEmnet)** at the Norwegian University of Science and Technology, Trondheim. The project was to simulate processor prefetchers in a hardware simulator, M5, and see how well the different prefetchers can improve the performance of the processor. The abstract to the report can be read in the next section and the full report can be opened in GitHub from [here](https://github.com/mariugul/DCPT-Prefetcher/blob/master/Report.pdf).
 
 
 
